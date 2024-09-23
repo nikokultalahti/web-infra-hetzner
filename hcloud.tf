@@ -10,6 +10,7 @@ resource "hcloud_server" "server" {
   image       = var.os_type
   location    = var.location
   ssh_keys    = [hcloud_ssh_key.default.id]
+  user_data   = "${file("user-data.yml")}"
 }
 
 # Create a volume

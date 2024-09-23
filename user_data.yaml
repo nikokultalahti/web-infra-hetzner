@@ -16,7 +16,6 @@ runcmd:
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - systemctl enable fail2ban
   - systemctl start fail2ban
-  - ufw allow OpenSSH
   - ufw allow from proto tcp to any port 1111
   - ufw limit 1111
   - ufw allow http
