@@ -13,10 +13,9 @@ resource "hcloud_server" "server" {
 }
 
 # Create a volume
-resource "hcloud_volume" "storage" {
+resource "hcloud_volume" "volume" {
   name       = "storage"
   size       = 100
-  location   = var.location
   server_id  = "${hcloud_server.server.id}"
   automount  = true
   format     = "ext4"
