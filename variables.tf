@@ -8,8 +8,7 @@ terraform {
 }
 
 variable "hcloud_token" {
-  sensitive = true
-  default = "IcNZpEkrxS0vFZ13QwZ1WhkKTbvfoHKIArepfmMMoadXNIf0wwdEHs0pbX7m6Oop"
+  # default = ""
 }
 
 variable "location" {
