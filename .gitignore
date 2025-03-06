@@ -12,3 +12,6 @@ crash.*.log
 # Ignore transient lock info files created by terraform 
 .terraform.tfstate.lock.info
 .terraform.lock.hcl
+
+# Exclude enviromental variables
+.env
