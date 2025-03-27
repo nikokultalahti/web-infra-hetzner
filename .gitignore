@@ -13,5 +13,6 @@ crash.*.log
 .terraform.tfstate.lock.info
 .terraform.lock.hcl
 
-# Exclude enviromental variables
+# Exclude environmental variables
 .env
+*.tfvars
