@@ -1,6 +1,6 @@
 # About The Project
 
-This is my personal project that I use to set up the infrastrucure at Hetzner to host my personal projects. 
+This is my personal project that I use to set up the infrastrucure at Hetzner with **Terraform** to host my website and services.
 The project sets up required server(s) and puts in place proper security measures.
 
 The project also utilizes devcontainers. This means having only VSCode with Dev Containers extension and 
