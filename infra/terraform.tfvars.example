@@ -1,0 +1,10 @@
+# Required variables
+
+hcloud_token = "<your-hetzner-cloud-project-api-token>"
+ssh_public_key = "ssh-ed25519 AAAAC..."
+username = "<username-to-login-the-server"
+
+# Optional variables to override the defaults, couple of examples below
+
+# server_type = "cax11"   
+# image = "coolify"
