@@ -1,40 +1,49 @@
 # About The Project
 
-This is my personal project that I use to set up the infrastrucure at Hetzner to host my personal website. 
-The project sets up required server(s) and puts in place proper security measures, such as allowing login to the server only with an SSH key.
+This is my personal project that I use to set up the infrastrucure at Hetzner to host my personal projects. 
+The project sets up required server(s) and puts in place proper security measures.
 
-The project also utilizes Devcontainers, meaning having only Docker installed with VSCode and Dev Containers extension, one has everything needed.
-However, as I use 1Password as my personal password and secret manager. The instructions and code reflect that.
+The project also utilizes devcontainers. This means having only VSCode with Dev Containers extension and 
+Docker (or Podman with some additional VSCode configuration) installed, one has everything needed to run the project.
+
+## Features
+
+- Using devcontainers for quick start and having everything needed to start developing/run the project
+- Configuration that requires minimal changes to only one file in order to run successfully
+- An example of such configuration file
+- Sensible defaults (see `variables.tf`) unless overriden
+    - Smallest Hetzner Intel vCPU 
+    - Ubuntu 22.04 image
+    - Validating server creation to EU (defaulting to Finland)
+- Update and harden the server
+    - Setup UFW (allowing SSH in non-default port, HTTP and HTTPS)
+    - Setup Fail2Ban
+    - Harden SSH configuration
 
 ## Getting Started
 
-This project assumes the use of VSCode with Dev Containers extensions and having Docker (or Podman if configured properly) installed and 
+This project assumes the use of VSCode with Devcontainers extension.
 
 ### Prerequisites
 
 1. VSCode with Dev Containers extension
-2. Docker (or Podman if properly configured in VSCode)
-3. Service Account created in 1Password with access to required secrets and the token available
+2. Docker (or Podman if properly configured in VSCode) installed
+3. Have a project in Hetzer Cloud and API token for said project available
 
 ### Installation
 
-1. Clone the repo with `git clone https://github.com/nikokultalahti/personal-cloud-infra-hetzner.git`
-2. Open the folder in VSCode and reopen it in a Dev Container
-3. Change references in `.env` file to point to your correct values/secrets in your 1Password vault
-4. Change user and public key key in `user_data.yaml` file
+1. Clone the repo with `git clone https://github.com/nikokultalahti/web-infra-hetzner.git`
+2. Open the folder in VSCode and (re)open it in a Dev Container
+3. Rename the `.terraform.tfvars.example` file to `.terraform.tfvars`
+4. Set the required variables in ``.terraform.tfvars`file
+5. Change user and public key key in `user_data.yaml` file
 
-## Usage
+### Usage
 
-1. Create a new project in Hetzner
-2. Create an API key for the project and save it in 1Password
-3. Add 1Password Service Account to the environment
-```
-export OP_SERVICE_ACCOUNT_TOKEN=<<Your OP_SERVICE_ACCOUNT_TOKEN>>
-
-```
-4. Run `terraform init` to initialize terraform
-5. Run `op run --env-file=.env terraform plan` to check things work as intended and see what would get created
-6. Create infra by running `op run --env-file=.env terraform plan`
+1. Run `terraform init` to initialize terraform
+2. Run `terraform plan`to check things work as intended and see what would get created
+3. Create infrastructure by running `terraform apply`
+4. After deploying the infra, you should be able to SSH using the username and key you specified via (non-default) port 1111
 
 ## Contact
 
