@@ -1,9 +1,10 @@
 # Create a server
-resource "hcloud_server" "server" {
-  name        = "server"
-  server_type = "cx22"
-  image       = "ubuntu-22.04"
-  location    = "hel1"
+resource "hcloud_server" "coolify" {
+  name        = "coolify"
+  server_type = "${var.server_type}"
+  image       = "${var.image}"
+  location    = "${var.location}"
   ssh_keys    = [hcloud_ssh_key.default.id]
-  user_data   = "${file("user_data.yaml")}"
+  user_data   = "${file("./templates/user_data.yaml")}"
+  firewall_ids = [hcloud_firewall.firewall_coolify.id]
 }
