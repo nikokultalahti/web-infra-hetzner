@@ -6,11 +6,13 @@ variable "hcloud_token" {
 variable "username" {
     description = "Name of the user to be created"
     type = string
+    default  = ""
 }
 
 variable "ssh_public_key" {
     description = "Public SSH key to be used to access the server"
     type = string
+    default = ""
 }
 
 variable "server_type" {
