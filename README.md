@@ -1,7 +1,6 @@
 # About The Project
 
-This is my personal project that I use to set up the infrastrucure at Hetzner with **Terraform** to host my website and services.
-The project sets up required server(s) and puts in place proper security measures.
+This is my personal project that I use to set up the infrastrucure at Hetzner with **Terraform** to host my website and services. The project sets up required server(s) and firewalls and puts in place proper security measures on the server.
 
 The project also utilizes devcontainers. This means having only VSCode with Dev Containers extension and 
 Docker (or Podman with some additional VSCode configuration) installed, one has everything needed to run the project.
@@ -14,10 +13,10 @@ Docker (or Podman with some additional VSCode configuration) installed, one has 
 - Sensible defaults (see `variables.tf`) unless overriden
     - Smallest Hetzner Intel vCPU 
     - Ubuntu 22.04 image
-    - Validating server creation to EU (defaulting to Finland)
+    - Defaulting location to Finland
 - Update and harden the server
-    - Setup UFW (allowing SSH in non-default port, HTTP and HTTPS)
-    - Setup Fail2Ban
+    - Setup Hetzner firewall allowing necessary inbound connections for Coolify (including ports 80 and 443)
+    - Setup fail2ban to the server
     - Harden SSH configuration
 
 ## Getting Started
