@@ -23,7 +23,7 @@ runcmd:
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   # Harden SSH configuration
   - sed -i -e "/^\(#\|\)Port/s/^.*$/Port 1111/" /etc/ssh/sshd_config 
-  - sed -i -e "/^\(#\|\)PermitRootLogin/s/^.*$/PermitRootLogin no/" /etc/ssh/sshd_config 
+  - sed -i -e "/^\(#\|\)PermitRootLogin/s/^.*$/PermitRootLogin prohibit-password/" /etc/ssh/sshd_config 
   - sed -i -e "/^\(#\|\)PasswordAuthentication/s/^.*$/PasswordAuthentication no/" /etc/ssh/sshd_config
   - sed -i -e "/^\(#\|\)MaxAuthTries/s/^.*$/MaxAuthTries 3/" /etc/ssh/sshd_config
   - sed -i -e "/^\(#\|\)X11Forwarding/s/^.*$/X11Forwarding no/" /etc/ssh/sshd_config
@@ -36,4 +36,9 @@ runcmd:
   - systemctl reload ssh
   - apt-get autoremove -y
   - apt-get clean
+  # Install Coolify and set proper permissions for non-root user
+  - curl -fsSL https://cdn.coollabs.io/coolify/install.sh | sudo bash
+  - sudo chown -R 9999:${username} /data/coolify
+  - sudo chmod -R 750 /data/coolify
+  - sudo chmod -R 700 /data/coolify/ssh
   - reboot
