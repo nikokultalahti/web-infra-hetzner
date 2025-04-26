@@ -9,5 +9,5 @@ terraform {
 
 # Configure the Hetzner Cloud Provider
 provider "hcloud" {
-  token   = ""
+  token   = var.hcloud_token
 }
