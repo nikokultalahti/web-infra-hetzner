@@ -1,30 +1,10 @@
-resource "hcloud_firewall" "firewall_coolify" {
-    name   = "firewall_coolify"
+resource "hcloud_firewall" "firewall" {
+    name   = "firewall"
 
     rule {
         direction = "in"
         protocol  = "tcp"
         port = "1111"
-        source_ips = [
-        "0.0.0.0/0",
-        "::/0"
-        ]
-    }
-
-    rule {
-        direction = "in"
-        protocol  = "tcp"
-        port      = "8000"
-        source_ips = [
-        "0.0.0.0/0",
-        "::/0"
-        ]
-    }
-
-    rule {
-        direction = "in"
-        protocol  = "tcp"
-        port      = "6001-6002"
         source_ips = [
         "0.0.0.0/0",
         "::/0"
